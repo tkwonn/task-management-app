@@ -45,7 +45,10 @@ export default{
   methods:{
     ...mapActions(['deleteTask', 'updateTask']),
     deleteTaskI(){
-      this.deleteTask({ taskIndex: this.taskIndex, sectionIndex: this.sectionIndex })
+      if(confirm("Do you really want to delete this task?")){
+        this.deleteTask({ taskIndex: this.taskIndex, sectionIndex: this.sectionIndex })
+      }
+      else return;
     },
     taskContentChange(e){
       this.newContent = e.target.value;
